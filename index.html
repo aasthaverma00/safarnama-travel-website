@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Safarnama - Explore India</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="navbar" id="navbar">
+        <div class="logo">✈️ Safarnama</div>
+
+        <button class="menu-btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#top">Home</a>
+            <a href="#places">Destinations</a>
+            <a href="#about">About</a>
+            <a href="#mybookings">My Bookings</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <!-- ============ HERO ============ -->
+    <div class="hero" id="top">
+        <div class="sun"></div>
+        <div class="cloud cloud1">☁️</div>
+        <div class="cloud cloud2">☁️</div>
+        <div class="plane">✈️</div>
+        <div class="mountain m1"></div>
+        <div class="mountain m2"></div>
+        <div class="mountain m3"></div>
+
+        <div class="content">
+            <div class="tag-line">🇮🇳 Discover Incredible India</div>
+            <h1>Explore the World, <span>One Journey</span> at a Time</h1>
+            <p>Pahaad, samundar ya purane shehar. Apni agli trip yahin se plan karo!</p>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Where do you want to go? (Goa, Manali...)">
+                <button onclick="searchTrip()">Search Trip</button>
+            </div>
+
+            <div class="quick">
+                <button onclick="quick('Goa')">🏖️ Goa</button>
+                <button onclick="quick('Manali')">🏔️ Manali</button>
+                <button onclick="quick('Jaipur')">🏰 Jaipur</button>
+                <button onclick="quick('Kerala')">🌴 Kerala</button>
+            </div>
+
+            <div class="stats">
+                <div>
+                    <h3>50+</h3>
+                    <p>Destinations</p>
+                </div>
+                <div>
+                    <h3>10K+</h3>
+                    <p>Happy Travellers</p>
+                </div>
+                <div>
+                    <h3>4.8 ⭐</h3>
+                    <p>Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ DESTINATIONS ============ -->
+    <div class="section reveal" id="places">
+        <h2>Popular Destinations</h2>
+        <p class="section-sub">Pick a place, check the full plan and book in a few clicks.</p>
+        <div class="filters" id="filters">
+            <button class="filter-btn active" onclick="setCategory('All')">All</button>
+            <button class="filter-btn" onclick="setCategory('Beach')">Beach</button>
+            <button class="filter-btn" onclick="setCategory('Mountain')">Mountain</button>
+            <button class="filter-btn" onclick="setCategory('Heritage')">Heritage</button>
+            <button class="filter-btn" onclick="setCategory('Nature')">Nature</button>
+        </div>
+        <div class="cards" id="cards"></div>
+    </div>
+
+    <!-- ============ ABOUT ============ -->
+    <div class="section gray-bg reveal" id="about">
+        <h2>About Safarnama</h2>
+        <p class="section-sub">Safarnama is a travel booking platform that makes trips across India simple, affordable
+            and reliable.</p>
+        <div class="row">
+            <div class="box">
+                <div class="ico">🗺️</div>
+                <h3>Expert Planned Trips</h3>
+                <p>Every itinerary is planned in advance, so you only have to enjoy.</p>
+            </div>
+            <div class="box">
+                <div class="ico">💰</div>
+                <h3>Best Prices</h3>
+                <p>No hidden charges. The price you see is the price you pay.</p>
+            </div>
+            <div class="box">
+                <div class="ico">🛡️</div>
+                <h3>Safe Travel</h3>
+                <p>Verified hotels and trusted drivers for a worry-free journey.</p>
+            </div>
+            <div class="box">
+                <div class="ico">🎧</div>
+                <h3>24/7 Support</h3>
+                <p>Our team is available any time during your trip.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ HOW BOOKING WORKS ============ -->
+    <div class="section reveal" id="how">
+        <h2>How Booking Works</h2>
+        <p class="section-sub">Four easy steps from dreaming to travelling.</p>
+        <div class="row">
+            <div class="box">
+                <div class="step-no">1</div>
+                <h3>Choose a Destination</h3>
+                <p>Search or pick from our popular destinations.</p>
+            </div>
+            <div class="box">
+                <div class="step-no">2</div>
+                <h3>Check the Details</h3>
+                <p>See the itinerary, best time to visit and price.</p>
+            </div>
+            <div class="box">
+                <div class="step-no">3</div>
+                <h3>Fill the Booking Form</h3>
+                <p>Add your details, date and number of travellers.</p>
+            </div>
+            <div class="box">
+                <div class="step-no">4</div>
+                <h3>Start Your Journey</h3>
+                <p>Get your booking ID, pack your bags and go.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ MY BOOKINGS ============ -->
+    <div class="section gray-bg reveal" id="mybookings">
+        <h2>My Bookings</h2>
+        <p class="section-sub">Your confirmed trips will appear here.</p>
+        <div class="bookings" id="bookingList"></div>
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <div class="section reveal" id="contact">
+        <h2>Contact Us</h2>
+        <p class="section-sub">Have a question or a special request? Send us a message and we will reply within 24
+            hours.</p>
+        <div class="contact-wrap">
+            <div class="contact-left">
+                <div class="info-card">
+                    <div class="ic">📍</div>
+                    <div>
+                        <h4>Address</h4>
+                        <p>BIHAR , PATNA </p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="ic">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>+91 98XXX XXXXX</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="ic">✉️</div>
+                    <div>
+                        <h4>Email</h4>
+                        <p>hello@safarnama.in</p>
+                    </div>
+                </div>
+                <div class="info-card">
+                    <div class="ic">🕘</div>
+                    <div>
+                        <h4>Working Hours</h4>
+                        <p>Mon - Sat, 10 AM to 7 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <div id="contactFormBox">
+                    <h3>Send us a message</h3>
+                    <div class="fg"><input type="text" id="cName" placeholder=" "><label for="cName">Your
+                            Name</label><span class="err" id="e_cName"></span></div>
+                    <div class="fg"><input type="email" id="cEmail" placeholder=" "><label for="cEmail">Email
+                            Address</label><span class="err" id="e_cEmail"></span></div>
+                    <div class="fg">
+                        <select id="cSubject">
+                            <option value="">Select a topic</option>
+                            <option>Trip Enquiry</option>
+                            <option>Booking Help</option>
+                            <option>Cancellation</option>
+                            <option>Feedback</option>
+                        </select>
+                        <label for="cSubject">Subject</label><span class="err" id="e_cSubject"></span>
+                    </div>
+                    <div class="fg"><textarea id="cMsg" rows="4" placeholder=" "></textarea><label for="cMsg">Your
+                            Message</label><span class="err" id="e_cMsg"></span></div>
+                    <button class="btn" id="sendBtn" onclick="sendMessage()">Send Message</button>
+                </div>
+
+                <div class="success" id="contactSuccess" style="display:none">
+                    <svg class="tick" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" />
+                        <path d="M30 52 L45 66 L72 36" />
+                    </svg>
+                    <h3>Message Sent!</h3>
+                    <p id="contactSuccessText"></p>
+                    <button class="btn ghost" onclick="resetContact()">Send Another Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ FAQ ============ -->
+    <div class="section gray-bg reveal" id="faq">
+        <h2>Frequently Asked Questions</h2>
+        <p class="section-sub">Quick answers to common questions.</p>
+        <div class="faq">
+            <details>
+                <summary>How do I cancel a booking?</summary>
+                <p>Go to the "My Bookings" section and press the Cancel button next to your trip.</p>
+            </details>
+            <details>
+                <summary>Is the hotel included in the price?</summary>
+                <p>Yes. The price includes stay, local travel and breakfast. GST is added at checkout.</p>
+            </details>
+            <details>
+                <summary>Can I book for a group?</summary>
+                <p>Yes, you can add up to 8 travellers in a single booking.</p>
+            </details>
+            <details>
+                <summary>What is the Premium package?</summary>
+                <p>Premium adds better hotels, private transfers and one extra experience for 20% more.</p>
+            </details>
+        </div>
+    </div>
+
+    <!-- ============ FOOTER ============ -->
+    <div class="footer">
+        <div class="footer-top">
+            <div class="footer-col brand">
+                <div class="logo">✈️ Safarnama</div>
+                <p>Your trusted travel partner for the best places in India. Explore the world, one journey at a time.
+                </p>
+                <div class="social"><span>f</span><span>in</span><span>ig</span><span>X</span></div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <a href="#top">Home</a><a href="#places">Destinations</a><a href="#about">About Us</a><a
+                    href="#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Popular Trips</h4>
+                <a href="#places" onclick="quick('Goa')">Goa</a>
+                <a href="#places" onclick="quick('Manali')">Manali</a>
+                <a href="#places" onclick="quick('Kerala')">Kerala</a>
+                <a href="#places" onclick="quick('Leh')">Leh Ladakh</a>
+            </div>
+            <div class="footer-col">
+                <h4>Newsletter</h4>
+                <p>Get the best travel deals in your inbox.</p>
+                <div class="subscribe"><input type="email" id="subEmail" placeholder="Your email"><button
+                        onclick="subscribe()">Join</button></div>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 Safarnama. All rights reserved. | Made with ❤️ in India</div>
+    </div>
+
+    <!-- ============ DESTINATION DETAILS POPUP ============ -->
+    <div class="overlay" id="detailOverlay" onclick="outsideClick(event)">
+        <div class="modal wide">
+            <span class="close" onclick="closeDetails()">&times;</span>
+            <div class="d-banner" id="dBanner"></div>
+            <h2 id="dTitle"></h2>
+            <p class="sub" id="dTag"></p>
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(0)">Overview</button>
+                <button class="tab" onclick="switchTab(1)">Itinerary</button>
+                <button class="tab" onclick="switchTab(2)">Included</button>
+            </div>
+            <div class="tab-panel active">
+                <div class="facts" id="dFacts"></div>
+                <p id="dAbout"></p>
+                <div class="chips" id="dHigh"></div>
+            </div>
+            <div class="tab-panel">
+                <ul class="timeline" id="dPlan"></ul>
+            </div>
+            <div class="tab-panel">
+                <div class="chips" id="dInc"></div>
+            </div>
+            <br>
+            <button class="btn" id="dBook">Book This Trip</button>
+        </div>
+    </div>
+
+    <!-- ============ BOOKING POPUP (3 steps) ============ -->
+    <div class="overlay" id="bookOverlay" onclick="outsideClick(event)">
+        <div class="modal" style="position:relative">
+            <span class="close" onclick="closeBooking()">&times;</span>
+
+            <div id="bookWizard">
+                <h2 id="bTitle">Book Trip</h2>
+                <p class="sub" id="bSub"></p>
+
+                <div class="progress">
+                    <div class="bar" id="bar"></div>
+                    <div class="dot active"><span>1</span>Details</div>
+                    <div class="dot"><span>2</span>Trip</div>
+                    <div class="dot"><span>3</span>Confirm</div>
+                </div>
+
+                <!-- Step 1 -->
+                <div class="step active">
+                    <h4>Who is travelling?</h4>
+                    <div class="fg"><input type="text" id="bName" placeholder=" "><label for="bName">Full
+                            Name</label><span class="err" id="e_bName"></span></div>
+                    <div class="fg"><input type="text" id="bPhone" placeholder=" " maxlength="10"><label
+                            for="bPhone">Mobile Number</label><span class="err" id="e_bPhone"></span></div>
+                    <div class="fg"><input type="email" id="bEmail" placeholder=" "><label for="bEmail">Email
+                            Address</label><span class="err" id="e_bEmail"></span></div>
+                    <button class="btn" onclick="nextStep()">Next: Trip Details</button>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="step">
+                    <h4>Plan your trip</h4>
+                    <div class="fg"><input type="date" id="bDate" placeholder=" "><label for="bDate">Travel
+                            Date</label><span class="err" id="e_bDate"></span></div>
+                    <div class="counter">
+                        <span>Number of travellers</span>
+                        <div><button onclick="changePeople(-1)">−</button><b id="bPeople">1</b><button
+                                onclick="changePeople(1)">+</button></div>
+                    </div>
+                    <div class="packages">
+                        <div class="pkg selected" id="pkgStandard" onclick="selectPackage('Standard')">
+                            <b>Standard</b>Comfortable stay and local travel
+                        </div>
+                        <div class="pkg" id="pkgPremium" onclick="selectPackage('Premium')"><b>Premium (+20%)</b>Better
+                            hotels and private transfers</div>
+                    </div>
+                    <br>
+                    <div class="btn-row">
+                        <button class="btn ghost" onclick="prevStep()">Back</button>
+                        <button class="btn" onclick="nextStep()">Next: Review</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="step">
+                    <h4>Review your booking</h4>
+                    <div class="summary" id="bSummary"></div>
+                    <div class="btn-row">
+                        <button class="btn ghost" onclick="prevStep()">Back</button>
+                        <button class="btn" id="confirmBtn" onclick="confirmBooking()">Confirm Booking</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success screen -->
+            <div class="success" id="bSuccess" style="display:none">
+                <svg class="tick" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="40" />
+                    <path d="M30 52 L45 66 L72 36" />
+                </svg>
+                <h3>Booking Confirmed!</h3>
+                <div class="bid" id="sId"></div>
+                <p id="sText"></p>
+                <button class="btn"
+                    onclick="closeBooking(); document.getElementById('mybookings').scrollIntoView();">View My
+                    Bookings</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toasts"></div>
+    <button id="topBtn" onclick="window.scrollTo({top: 0})" aria-label="Back to top">↑</button>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
