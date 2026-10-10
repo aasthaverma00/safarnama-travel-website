@@ -27,21 +27,24 @@ Safarnama is a travel website created using **HTML, CSS, and JavaScript**. It fe
 
 ---
 
+
 ## 📸 Website Preview
 
 ### 🏠 Home Page
-![Home Page](images/home.png)
+![Home Page](./images/home.png)
 
 ### 🌎 Destinations
-![Destinations](images/destinations.png)
+![Destinations](./images/destinations.png)
 
 ### 🧳 Booking Section
-![Booking](images/booking.png)
+![Booking](./images/booking.png)
 
 ### 📩 Contact Section
-![Contact](images/contact.png)
+![Contact](./images/contact.png)
+
 
 ---
+
 
 ## 📂 Project Structure
 
